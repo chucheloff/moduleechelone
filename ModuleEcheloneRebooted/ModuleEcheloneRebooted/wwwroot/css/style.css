@@ -1,0 +1,159 @@
+
+html,body{
+    height: 100%;
+    width:100%;
+    font-family: 'Poppins',sans-serif;
+    color: #222;
+}
+
+a:hover{
+    color: burlywood !important;
+}
+.navbar{
+    padding: .8rem;
+}
+.navbar-nav li{
+    padding-right: 20px;
+}
+
+.nav-link{
+    font-size: 1.1em !important;
+}
+
+.carousel-caption{
+    position: absolute;
+    top: 60%;
+    transform: translateY(-20%);
+}
+
+btn:focus, a:focus
+{
+         outline: none !important;
+}
+.navbar-toggler:focus
+{
+         outline: none !important;
+         box-shadow: none;
+}
+
+.btn-secondary{
+    background-color: wheat !important;
+}
+.btn-primary, .btn-primary:focus, .btn-primary:active{
+    background-color: burlywood !important;
+    border: 1px solid burlywood !important;
+    outline:none !important;
+}
+.btn-primary:hover{
+    background-color: saddlebrown !important;
+    border: 1px solid saddlebrown !important;
+}
+
+.jumbatron{
+    padding: 1rem;
+    border-radius: 0;
+}
+
+.padding{
+    padding-bottom: 1rem;
+}
+
+.welcome {
+    margin: 0 auto;
+    padding-top:2rem;
+}
+
+ul{
+    list-style-type: none;
+}
+body{
+    background-color: #f8f8f8;
+}
+.menu{
+    font-size: large;
+    color : #000;
+    font-variant: small-caps;
+    text-decoration: none;
+}
+.desc{
+    font-size: 18px;
+    background-color: #eaeaea;
+    font-weight: 400;
+    color: black;
+}
+.short_desc{
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+.full_desc{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+.specs_desc{
+    list-style-type:armenian;
+    
+}
+
+.myClass{
+    text-align:center;
+}
+h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+p{
+    margin-top: 0px;
+}
+img{
+    margin-top: 5px;
+}
+
+.carouselPic{
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.carousel-inner img {
+    /*margin: auto;*/
+    width:auto;
+}
+
+footer{
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    flex: 0 0 auto;
+    display: flex;
+    margin-top: auto;
+    bottom:0;
+    justify-content: center;
+    max-height: 300px;
+}
+
+.fill {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+}
+
+.card-title{
+    color: #1b1e21;
+}
+.card-body{
+    color: #1d2124;
+}
+/*
+Extra small (xs) < 576px
+
+Small (sm) > 576px < 768px
+
+Medium (md) > 768 px < 992px
+
+Large (lg) > 992px < 1200px
+
+Extra Large (xl) > 1200px 
+*/

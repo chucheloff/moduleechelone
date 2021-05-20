@@ -1,0 +1,60 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model IEnumerable<ModuleEcheloneRebooted.Models.ProductModel>
+
+@{
+    ViewBag.Title = "WareHouse";
+    Layout = "_Layout";
+}
+
+<div style="text-align: center;" >
+    <h1>Warehouse</h1>
+    <hr/>
+</div>
+<div class="align-content-center" style=
+     "text-align: center; max-width:80%; margin-left: auto; margin-right: auto;">
+    @TempData["msg"]
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th> 
+            
+            <th>
+                @Html.DisplayNameFor(model => model.BuyPrice)
+            </th> 
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th> 
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="ProductDetails" asp-route-Id="@item.ProductID">
+                        @Html.DisplayFor(modelItem => item.ProductID)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.BuyPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                
+            </tr>
+        }
+    </table>
+</div>

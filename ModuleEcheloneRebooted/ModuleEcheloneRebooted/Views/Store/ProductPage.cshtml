@@ -1,0 +1,38 @@
+@model ModuleEcheloneRebooted.Models.ProductModel
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "_Layout";
+}
+
+
+<h1 style= "text-align: center;" alt="PAGE TITLE">@Model.Manufacturer @Model.Name</h1>
+<table style="margin-left: 10%; margin-right: 30%;">
+    <colgroup>
+        <col span="1" style="width: 30%;">
+        <col span="1" style="width: 2%;">
+        <col span="1" style="width: 40%; margin-right: 30%;">
+    </colgroup>
+    <tr>
+        <td style="text-align: right;">
+            <a href = "~/src/@Model.Img" target="_blank">
+                <img src="~/src/@Model.Img" />
+            </a>
+        </td>
+        <td><!-- empty row for beauty --></td>
+        <td style="vertical-align: text-top;" class="desc">
+            <h4 class="short_desc"><b>@Model.Description_Short</b></h4>
+            <p class="full_desc">@Model.Description_Full</p>
+            &nbsp;<b>Specifications:</b>
+            <ul class="specs_desc">
+                @foreach (var item in @Model.Breakpoints)
+                {
+                    <li>@item</li> 
+                }
+            </ul>
+            <h4><i>Price: $@Model.Price</i></h4>
+        </td>
+    </tr>
+</table>
+<p></p>
+<hr class="my-4"/>

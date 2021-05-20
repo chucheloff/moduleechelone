@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\css\style.css" />
+      <None Include="wwwroot\src\background1.jpg" />
+      <None Include="wwwroot\src\background2.jpg" />
+      <None Include="wwwroot\src\background4.jpg" />
+      <None Include="wwwroot\src\background5.jpg" />
+      <None Include="wwwroot\src\blinds.jpg" />
+      <None Include="wwwroot\src\maths.jpg" />
+      <None Include="wwwroot\src\product1.png" />
+      <None Include="wwwroot\src\quad_vca.jpg" />
+      <None Include="wwwroot\src\title_proj.png" />
+      <None Include="wwwroot\src\veils.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql" Version="6.0.0-preview2" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    </ItemGroup>
+
+</Project>

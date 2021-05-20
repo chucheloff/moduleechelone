@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Controllers/HomeController.cs" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Models/ErrorViewModel.cs" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Program.cs" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Properties/launchSettings.json" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Startup.cs" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/Home/AboutUs.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/Home/Index.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/Shared/Error.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/Shared/_Layout.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/Shared/_ValidationScriptsPartial.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/_ViewImports.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/Views/_ViewStart.cshtml" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/appsettings.Development.json" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/appsettings.json" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/css/style.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/favicon.ico" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/js/site.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/LICENSE" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation/LICENSE.md" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation/dist/additional-methods.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation/dist/jquery.validate.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery/LICENSE.txt" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery/dist/jquery.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery/dist/jquery.min.js" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+    <file url="file://$PROJECT_DIR$/ModuleEcheloneRebooted/wwwroot/lib/jquery/dist/jquery.min.map" libraries="{bootstrap, font-awesome, jquery-3.2.1.slim, popper.js}" />
+  </component>
+</project>

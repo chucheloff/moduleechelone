@@ -1,0 +1,39 @@
+@model IEnumerable<ModuleEcheloneRebooted.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Catalogue";
+}
+<!--ModuleEcheloneRebooted.Views.Home.Catalog -->
+<!-- Page title -->
+<div class="container-fluid padding" style="max-width: 80%;">
+    <div class="row text-center welcome padding" >
+        <div class="col-12">
+            <h1 class="display-4">Our products</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Product cards -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <a asp-controller="Store" asp-action="ProductPage" asp-route-Id="@item.ProductID">
+                    <img class="card-img-top" src="~/src/@item.Img" style="max-height: 250px;object-fit: cover;" alt="@item.Name"/>
+                    </a>
+                    <div class="card-body">
+                        <div class="card-title"><b>@item.Manufacturer @item.Name</b></div>
+                        <div class="card-text">@item.Description_Short</div>
+                        <br/>
+                        <a asp-controller="Store" asp-action="ProductPage" asp-route-Id="@item.ProductID">
+                            <button type="button" class="btn btn-primary btn-lg">Buy $<i>@item.Price</i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr/>

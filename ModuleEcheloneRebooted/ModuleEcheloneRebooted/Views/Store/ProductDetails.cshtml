@@ -1,0 +1,27 @@
+@model ModuleEcheloneRebooted.Models.ProductModel
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "_Layout";
+}
+<div style="text-align: center;" >
+    <h1>@Model.Name</h1>
+    <hr/>
+    Product Name : @Model.Name
+    <br/>
+    Product Price : @Model.Price
+    <br/>
+    Product Buy Price : @Model.BuyPrice
+    <br/>
+    Product Stock : @Model.Stock
+    <br/>
+    Product Manufacturer : @Model.Manufacturer
+    <br/>
+    Product ID : @Model.ProductID
+    <br/>
+    
+    <form method="post" asp-action="delete">
+        <input type="hidden" name="id" value="@Model.ProductID"/>
+        <button class="btn btn-danger">Deleteeee</button>
+    </form>
+</div>
