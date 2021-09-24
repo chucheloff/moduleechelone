@@ -10,13 +10,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ModuleEcheloneRebooted.Models;
+using static ModuleEcheloneRebooted.Helpers;
 
 namespace ModuleEcheloneRebooted.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;

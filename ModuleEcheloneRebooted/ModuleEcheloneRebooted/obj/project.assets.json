@@ -533,11 +533,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chuch/Documents/misis/labs/web/БПИ-19-2_2_ЧучеловНА_18_Интернет-магазин/SRC/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
+      "projectUniqueName": "/Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
       "projectName": "ModuleEcheloneRebooted",
-      "projectPath": "/Users/chuch/Documents/misis/labs/web/БПИ-19-2_2_ЧучеловНА_18_Интернет-магазин/SRC/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
+      "projectPath": "/Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
       "packagesPath": "/Users/chuch/.nuget/packages/",
-      "outputPath": "/Users/chuch/Documents/misis/labs/web/БПИ-19-2_2_ЧучеловНА_18_Интернет-магазин/SRC/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/",
+      "outputPath": "/Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chuch/.nuget/NuGet/NuGet.Config"
@@ -591,7 +591,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }

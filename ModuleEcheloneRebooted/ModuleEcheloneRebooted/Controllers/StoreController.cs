@@ -14,11 +14,14 @@ namespace ModuleEcheloneRebooted.Controllers
     {
         private string connStr;
         private readonly ILogger<StoreController> _logger;
-
+        private Helpers helper;
+        private const Boolean updateGuids = false;
         public StoreController(ILogger<StoreController> logger, IConfiguration _configuration)
         {
             _logger = logger;
             connStr = _configuration.GetConnectionString("postgre");
+            helper = new Helpers(_configuration);
+            if (updateGuids) {helper.UpdateAllGuid();}
         }
         
         // GET : Store/Catalog
@@ -154,7 +157,7 @@ namespace ModuleEcheloneRebooted.Controllers
             return Redirect("~/Store/Warehouse");
 
         }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

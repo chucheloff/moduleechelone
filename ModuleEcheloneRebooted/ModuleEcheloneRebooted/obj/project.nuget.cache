@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/v5HsqS89IRseabWTcDXOhymkfmwB8kDwJx21VMN5nUOqkbWAWLt6h9RurZQwD7T9cXHAe4ooIN3VOj962IftA==",
+  "dgSpecHash": "z6+U/GOoj7vtbmbruFLV5ylotAbu4vRQwWXp2XwFNby/Lj3anR4Z2d0eMOAiHYqjbeAIX5u0sShRjU4gFGO+xQ==",
   "success": true,
-  "projectFilePath": "/Users/chuch/Documents/misis/labs/web/БПИ-19-2_2_ЧучеловНА_18_Интернет-магазин/SRC/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
+  "projectFilePath": "/Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/ModuleEcheloneRebooted.csproj",
   "expectedPackageFiles": [
     "/Users/chuch/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/chuch/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
