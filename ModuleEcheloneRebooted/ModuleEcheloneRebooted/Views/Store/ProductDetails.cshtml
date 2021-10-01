@@ -5,23 +5,40 @@
     Layout = "_Layout";
 }
 <div style="text-align: center;" >
-    <h1>@Model.Name</h1>
+    <h1 class="display-4">@Model.Name</h1>
     <hr/>
-    Product Name : @Model.Name
-    <br/>
-    Product Price : @Model.Price
-    <br/>
-    Product Buy Price : @Model.BuyPrice
-    <br/>
-    Product Stock : @Model.Stock
-    <br/>
-    Product Manufacturer : @Model.Manufacturer
-    <br/>
-    Product ID : @Model.ProductID
-    <br/>
-    
-    <form method="post" asp-action="delete">
-        <input type="hidden" name="id" value="@Model.ProductID"/>
+    <form method="post" asp-action="UpdateInsert">
+        <input type="hidden" name="id" value = "@Model.ProductId"/>
+        <table class="table">
+            <tr>
+                <th>ProductID</th>
+                <td>@Model.ProductId</td>
+            </tr>
+            <tr>
+                <th>Product Name</th>
+                <td><input type="text" name="Name" value="@Model.Name"/></td>
+            </tr>
+            <tr>
+                <th>Product Price</th>  
+                <td><input type="text" name="Price" value="@Model.Price"/></td>
+            </tr>
+            <tr>
+                <th>Product Buy Price</th>
+                <td><input type="text" name="BuyPrice" value="@Model.BuyPrice"/></td>
+            </tr>
+            <tr>
+                <th>Product Stock </th>
+                <td><input type="text" name="Stock" value="@Model.Stock"/></td>
+            </tr>
+            <tr>
+                <th>Product Manufacturer </th>
+                <td><input type="text" name="Manufacturer" value="@Model.Manufacturer"/></td>
+            </tr>
+        </table>
+        <button class="btn btn-info">@(Model.ProductId > 0 ? "Обновить" : "Добавить")</button>
+    </form>
+    <form method="post" asp-action="delete" class="mt-2">
+        <input type="hidden" name="id" value="@Model.ProductId"/>
         <button class="btn btn-danger">Deleteeee</button>
     </form>
 </div>
