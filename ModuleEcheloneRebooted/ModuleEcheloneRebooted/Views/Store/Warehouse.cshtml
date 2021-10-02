@@ -13,6 +13,8 @@
 <div class="align-content-center" style=
      "text-align: center; max-width:80%; margin-left: auto; margin-right: auto;">
     <a asp-action="Add">ADD ITEM</a>
+    <p id = "showCount">Different Items in Warehouse</p>
+    <p id = "totalStock">Total stock in Warehouse</p>
     @TempData["msg"]
     <table class="table">
         <tr>
@@ -42,7 +44,7 @@
                         @Html.DisplayFor(modelItem => item.ProductId)
                     </a>
                 </td>
-                <td>
+                <td class="name" data-id="@item.ProductId">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
@@ -54,8 +56,52 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Stock)
                 </td>
-
             </tr>
         }
     </table>
 </div>
+
+@section Scripts
+{
+    <script>
+        $("#showCount").click(function () {
+           $.ajax({
+               url:"/Store/ProductsCount",
+               dataType:"json",
+               success: function (jsonData) {
+                      $("#showCount").html("Different items in the warehouse right now : " + jsonData.count); 
+               }
+           });
+        });       
+       $("#totalStock").click(function () {
+           $.ajax({
+                url:"/Store/GrossStock",
+                dataType:"json",
+                success: function (jsonData) {
+                    $("#totalStock").html("Total stock in warehouse right now : " + jsonData.count);
+                }
+           });    
+       }) ;
+       
+       
+       // /Store/GetProductHtml
+       $(".name[data-id]").click(function () {
+        var id = $(this).attr("data-id");
+        //alert("id = " + id);
+        $.ajax({
+            type:"get",
+            url:"/Store/GetProductHtml/" + id, 
+            //dataType: "html",
+            error: function (XMLHttpRequest,textStatus, errorThrown){
+                alert("ajax error textStatus=" + textStatus + ",errorThrown=" + errorThrown)
+            },
+            success: function (htmlData){
+                //alert(htmlData);
+                //$(this).html(htmlData);
+                $(".name[data-id=" + id + "]").html(htmlData);
+            }
+        });
+       
+       })
+    </script>
+}

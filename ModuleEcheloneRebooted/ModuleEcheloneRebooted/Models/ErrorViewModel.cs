@@ -1,5 +1,3 @@
-using System;
-
 namespace ModuleEcheloneRebooted.Models
 {
     public class ErrorViewModel

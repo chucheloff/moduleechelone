@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ModuleEcheloneRebooted.Models;
 using Npgsql;
+using static ModuleEcheloneRebooted.Helpers;
 
 namespace ModuleEcheloneRebooted.Controllers
 {
@@ -16,17 +16,15 @@ namespace ModuleEcheloneRebooted.Controllers
     {
         private string _connStr;
         private readonly ILogger<StoreController> _logger;
-        private Helpers _helper;
         private const Boolean UpdateGuids = false;
 
         public StoreController(ILogger<StoreController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _connStr = configuration.GetConnectionString("postgre");
-            _helper = new Helpers(configuration);
             if (UpdateGuids)
             {
-                _helper.UpdateAllGuid();
+               Helpers.UpdateAllGuid(_connStr);
             }
         }
 
@@ -71,7 +69,7 @@ namespace ModuleEcheloneRebooted.Controllers
         {
             return new ProductModel()
             {
-                ProductId = _helper.GetNextId(),
+                ProductId = GetNextId(_connStr),
                 Name = "",
                 Price = 0,
                 BuyPrice = 0,
@@ -252,7 +250,7 @@ namespace ModuleEcheloneRebooted.Controllers
 
         [HttpPost]
         public IActionResult UpdateInsert(int id, string name, decimal? price,
-            decimal? buyPrice, int? stock, string manufacturer,
+            decimal? buyPrice, int? stock, string Manufacturer,
             string Description_Short, string Description_Full, string Img, string Breakpoints)
         {
             try
@@ -260,8 +258,8 @@ namespace ModuleEcheloneRebooted.Controllers
                 NpgsqlParameter pId = new("@ProductId", id);
                 NpgsqlParameter pName = new("@Name", DBNull.Value);
                 if (!string.IsNullOrEmpty(name)) pName.Value = name;
-                NpgsqlParameter pManufacturer = new("@Manufacturer", manufacturer);
-                if (!string.IsNullOrEmpty(manufacturer)) pManufacturer.Value = manufacturer;
+                NpgsqlParameter pManufacturer = new("@Manufacturer",DBNull.Value );
+                if (!string.IsNullOrEmpty(Manufacturer)) pManufacturer.Value = Manufacturer;
                 NpgsqlParameter pPrice = new("@Price", price);
                 NpgsqlParameter pBuyPrice = new("@BuyPrice", buyPrice);
                 NpgsqlParameter pStock = new("@Stock", stock);
@@ -274,7 +272,7 @@ namespace ModuleEcheloneRebooted.Controllers
                 NpgsqlParameter pBreakpoints = new("@Breakpoints", DBNull.Value);
                 if (!string.IsNullOrEmpty(Breakpoints)) pBreakpoints.Value = Breakpoints;
 
-                var pReturnedProductId = _helper.ExecuteSQL_Scalar<int>(_connStr, @$"
+                var pReturnedProductId = ExecuteSQL_Scalar<int>(_connStr, @$"
                 insert INTO ""Products"" as p
                 (""ProductID"", ""Name"", ""Price"", ""BuyPrice"",
                 ""Stock"", ""Manufacturer"", ""Description_Short"",
@@ -307,6 +305,42 @@ namespace ModuleEcheloneRebooted.Controllers
             return Redirect("~/Store/Warehouse");
         }
 
+        
+        /// <summary>
+        /// Store/GetProductHtml/id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GetProductHtml(int id)
+        {
+            var product = GetProductDetails(id);
+            return View("ViewOnlyDetails", product);
+        }
+        
+        
+        /// <summary>
+        /// Store/ProductsCount
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult ProductsCount()
+        {
+            Int64 count = ExecuteSQL_Scalar<Int64>(_connStr, @"SELECT COUNT(distinct ""ProductID"") from ""Products"" where ""ProductID"" > 0");
+            var obj = new {Count = count };
+            return Json(obj);
+        }
+
+        /// <summary>
+        /// Store/GrossStock
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GrossStock()
+        {
+            Int64 count = ExecuteSQL_Scalar<Int64>(_connStr, @"select sum(""Stock"") from ""Products""");
+            var obj = new {Count = count};
+            return Json(obj);
+        }
      
     }
 }

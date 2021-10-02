@@ -148,3 +148,4 @@
 /Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/Debug/net5.0/ref/ModuleEcheloneRebooted.dll
 /Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/Debug/net5.0/ModuleEcheloneRebooted.pdb
 /Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/Debug/net5.0/ModuleEcheloneRebooted.genruntimeconfig.cache
+/Users/chuch/RiderProjects/moduleechelone/ModuleEcheloneRebooted/ModuleEcheloneRebooted/obj/Debug/net5.0/Razor/Views/Store/ViewOnlyDetails.cshtml.g.cs

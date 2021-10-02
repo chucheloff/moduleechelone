@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace ModuleEcheloneRebooted
@@ -12,21 +9,15 @@ namespace ModuleEcheloneRebooted
     public class Helpers
     {
         private static Random _random = new();
-        private string _connStr;
 
-        public Helpers(IConfiguration configuration)
-        {
-            _connStr = configuration.GetConnectionString(name: "postgre");
-        }
-        
-        private string RandomString(int length)
+        private static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[_random.Next(s.Length)]).ToArray());
         }
 
-        public void UpdateAllGuid()
+        public static void UpdateAllGuid(string _connStr)
         {
             try
             {
@@ -49,7 +40,7 @@ namespace ModuleEcheloneRebooted
                         "update \"Users\" set \"GUID\" = (@str) where \"id\" = (@id) ", conn2))
                     {
                         cmd.Parameters.AddWithValue("id", (int) sdr["id"]);
-                        cmd.Parameters.AddWithValue("str", this.RandomString(16));
+                        cmd.Parameters.AddWithValue("str", RandomString(16));
                         rowsAffected = cmd.ExecuteNonQuery();
                     }
                     Console.WriteLine(rowsAffected > 0
@@ -65,10 +56,10 @@ namespace ModuleEcheloneRebooted
             }
         }
 
-        public T ExecuteSQL_Scalar<T>(string connectionString, string sql, params Tuple<string, string>[] parameters)
+        public static T ExecuteSQL_Scalar<T>(string connectionString, string sql, params Tuple<string, string>[] parameters)
         {
             T obj = default(T);
-            using (NpgsqlConnection conn = new NpgsqlConnection(_connStr))
+            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
             {
                 NpgsqlCommand cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
@@ -89,7 +80,7 @@ namespace ModuleEcheloneRebooted
             return  obj;
         }
         
-        public T ExecuteSQL_Scalar<T>(string connectionString, string sql, params NpgsqlParameter[]  parameters)
+        public static T ExecuteSQL_Scalar<T>(string connectionString, string sql, params NpgsqlParameter[]  parameters)
         {
             Console.WriteLine("EXECUTING NEW SQL QUERY");
             Console.WriteLine(sql);
@@ -115,8 +106,16 @@ namespace ModuleEcheloneRebooted
             }
             return  obj;
         }
-
-        public int GetNextId()
+        
+        public static T ExecuteSQL_Scalar<T>(string connectionString, string sql)
+        {
+            NpgsqlParameter[] parameters = new NpgsqlParameter[0];
+            T obj = ExecuteSQL_Scalar<T>(connectionString, sql, parameters);
+            return obj;
+        }
+        
+        
+        public static int GetNextId(string _connStr)
         {
             var id = -1;
             using(NpgsqlConnection conn = new NpgsqlConnection(_connStr))

@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ModuleEcheloneRebooted.Models;
-using static ModuleEcheloneRebooted.Helpers;
 
 namespace ModuleEcheloneRebooted.Controllers
 {
