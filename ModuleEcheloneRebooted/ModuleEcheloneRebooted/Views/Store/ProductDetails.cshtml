@@ -15,24 +15,40 @@
                 <td>@Model.ProductId</td>
             </tr>
             <tr>
-                <th>Product Name</th>
+                <th>Name</th>
                 <td><input type="text" name="Name" value="@Model.Name"/></td>
             </tr>
             <tr>
-                <th>Product Price</th>  
+                <th>Price</th>  
                 <td><input type="text" name="Price" value="@Model.Price"/></td>
             </tr>
             <tr>
-                <th>Product Buy Price</th>
+                <th>Buy Price</th>
                 <td><input type="text" name="BuyPrice" value="@Model.BuyPrice"/></td>
             </tr>
             <tr>
-                <th>Product Stock </th>
+                <th>Stock </th>
                 <td><input type="text" name="Stock" value="@Model.Stock"/></td>
             </tr>
             <tr>
-                <th>Product Manufacturer </th>
+                <th>Manufacturer </th>
                 <td><input type="text" name="Manufacturer" value="@Model.Manufacturer"/></td>
+            </tr>
+            <tr>
+                <th>Short Description</th>
+                <td><input type="text" name="Description_Short" value="@Model.Description_Short"/></td>
+            </tr>
+            <tr>
+                <th>Fulll Description</th>
+                <td><input type="text" name="Description_Full" value="@Model.Description_Full"/></td>
+            </tr>
+            <tr>
+                <th>Image name</th>
+                <td><input type="text" name="Img" value="@Model.Img"/></td>
+            </tr>
+            <tr>
+                <th>Breakpoints</th>
+                <td><input type="text" name="Breakpoints" value="@Model.Breakpoints"/></td>
             </tr>
         </table>
         <button class="btn btn-info">@(Model.ProductId > 0 ? "Обновить" : "Добавить")</button>

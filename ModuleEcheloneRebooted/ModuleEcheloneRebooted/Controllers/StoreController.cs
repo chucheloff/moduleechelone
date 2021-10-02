@@ -71,54 +71,85 @@ namespace ModuleEcheloneRebooted.Controllers
         {
             return new ProductModel()
             {
-                ProductId = _helper.GetNextID(),
+                ProductId = _helper.GetNextId(),
                 Name = "",
                 Price = 0,
                 BuyPrice = 0,
                 Stock = 0,
                 Manufacturer = "",
-                DescriptionShort = "",
-                DescriptionFull = "",
-                Breakpoints = null,
+                Description_Short = "",
+                Description_Full = "",
+                Breakpoints = "",
                 Img = ""
             };
         }
         private ProductModel GetProductDetails(int id)
         {
-            ProductModel product = new ProductModel();
-            NpgsqlConnection conn = new NpgsqlConnection(_connStr);
-            conn.Open();
-            NpgsqlCommand comm = new NpgsqlCommand();
-            comm.Connection = conn;
-            comm.CommandType = CommandType.Text;
-            comm.CommandText = "select * from \"Products\" where \"ProductID\" = (@Id)";
-            comm.Parameters.AddWithValue("Id", id);
-
-            NpgsqlDataReader sdr = comm.ExecuteReader();
-            sdr.Read();
-            return new ProductModel()
+            try
             {
-                ProductId = (int)sdr["ProductID"],
-                Name = sdr["Name"].ToString(),
-                Price = (decimal)sdr["Price"],
-                BuyPrice = (decimal)sdr["BuyPrice"],
-                Stock = (int)sdr["Stock"],
-                Manufacturer = sdr["Manufacturer"].ToString(),
-                DescriptionShort = sdr["Description_Short"].ToString(),
-                DescriptionFull = sdr["Description_Full"].ToString(),
-                Breakpoints = sdr["Breakpoints"].ToString()?.Split('#'),
-                Img = sdr["Img"].ToString()
-            };
+
+
+                ProductModel product = new();
+                NpgsqlConnection conn = new(_connStr);
+                conn.Open();
+                NpgsqlCommand comm = new();
+                comm.Connection = conn;
+                comm.CommandType = CommandType.Text;
+                comm.CommandText = "select * from \"Products\" where \"ProductID\" = (@Id)";
+                comm.Parameters.AddWithValue("Id", id);
+
+                NpgsqlDataReader sdr = comm.ExecuteReader();
+                sdr.Read();
+
+                product.ProductId = (int)sdr["ProductID"];
+                product.Name = sdr["Name"].ToString();
+                if (sdr["Price"] != DBNull.Value)
+                {
+                    product.Price = (decimal)sdr["Price"];
+                }
+                else
+                {
+                    product.Price = 0;
+                }
+                if (sdr["BuyPrice"] != DBNull.Value)
+                {
+                    product.BuyPrice = (decimal)sdr["BuyPrice"];
+                }
+                else
+                {
+                    product.BuyPrice = 0;
+                }
+
+                if (sdr["Stock"] != DBNull.Value)
+                {
+                    product.Stock = (int)sdr["Stock"];
+                }
+                else
+                {
+                    product.Stock = 0;
+                }
+                product.Manufacturer = sdr["Manufacturer"].ToString();
+                product.Description_Short = sdr["Description_Short"].ToString();
+                product.Description_Full = sdr["Description_Full"].ToString();
+                product.Breakpoints = sdr["Breakpoints"].ToString();
+                product.Img = sdr["Img"].ToString();
+                return product;
+            }
+            catch (NpgsqlException e)
+            {
+                TempData["msg"] = $"Error occured with product [@id={id}][@msg={e.Message}]";
+                return GetNewProduct();
+            }
         }
 
         private List<ProductModel> GetDisplayedProducts(bool all = true)
         {
-            List<ProductModel> dp = new List<ProductModel>(); // displayed products
+            List<ProductModel> dp = new(); // displayed products
             try
             {
-                NpgsqlConnection conn = new NpgsqlConnection(_connStr);
+                NpgsqlConnection conn = new(_connStr);
                 conn.Open();
-                NpgsqlCommand comm = new NpgsqlCommand
+                NpgsqlCommand comm = new()
                 {
                     Connection = conn,
                     CommandType = CommandType.Text,
@@ -160,9 +191,9 @@ namespace ModuleEcheloneRebooted.Controllers
                         productlist.Stock = 0;
                     }
                     productlist.Img = sdr["Img"].ToString();
-                    productlist.DescriptionShort = sdr["Description_Short"].ToString();
-                    productlist.DescriptionFull = sdr["Description_Full"].ToString();
-                    productlist.Breakpoints = sdr["Breakpoints"].ToString()?.Split('#');
+                    productlist.Description_Short = sdr["Description_Short"].ToString();
+                    productlist.Description_Full = sdr["Description_Full"].ToString();
+                    productlist.Breakpoints = sdr["Breakpoints"].ToString();
                     if (all || productlist.Stock > 0)
                     {
                         dp.Add(productlist);
@@ -183,7 +214,7 @@ namespace ModuleEcheloneRebooted.Controllers
         {
             try
             {
-                NpgsqlConnection conn = new NpgsqlConnection(_connStr);
+                NpgsqlConnection conn = new(_connStr);
                 conn.Open();
                 var rowsAffected = 0;
                 using (var cmd = new NpgsqlCommand(
@@ -195,11 +226,11 @@ namespace ModuleEcheloneRebooted.Controllers
 
                 if (rowsAffected == 1)
                 {
-                    TempData["msg"] = "Deleted Successfully";
+                    TempData["msg"] = $"Deleted Successfully [@id={id}]";
                 }
                 else
                 {
-                    TempData["msg"] = $"Product with id = {id} not found";
+                    TempData["msg"] = $"Product not found [@id={id}]";
                 }
             }
             catch (NpgsqlException e)
@@ -222,42 +253,44 @@ namespace ModuleEcheloneRebooted.Controllers
         [HttpPost]
         public IActionResult UpdateInsert(int id, string name, decimal? price,
             decimal? buyPrice, int? stock, string manufacturer,
-            string descriptionShort, string descriptionFull, string img, string breakpoints)
+            string Description_Short, string Description_Full, string Img, string Breakpoints)
         {
             try
             {
-                NpgsqlParameter pId = new NpgsqlParameter("@ProductId", id);
-                NpgsqlParameter pName = new NpgsqlParameter("@Name", DBNull.Value);
+                NpgsqlParameter pId = new("@ProductId", id);
+                NpgsqlParameter pName = new("@Name", DBNull.Value);
                 if (!string.IsNullOrEmpty(name)) pName.Value = name;
-                NpgsqlParameter pManufacturer = new NpgsqlParameter("@Manufacturer", manufacturer);
+                NpgsqlParameter pManufacturer = new("@Manufacturer", manufacturer);
                 if (!string.IsNullOrEmpty(manufacturer)) pManufacturer.Value = manufacturer;
-                NpgsqlParameter pPrice = new NpgsqlParameter("@Price", price);
-                NpgsqlParameter pBuyPrice = new NpgsqlParameter("@BuyPrice", buyPrice);
-                NpgsqlParameter pStock = new NpgsqlParameter("@Stock", stock);
-                NpgsqlParameter pDescription_Short = new NpgsqlParameter("@Description_Short", DBNull.Value);
-                if (!string.IsNullOrEmpty(descriptionShort)) pDescription_Short.Value = descriptionShort;
-                NpgsqlParameter pDescription_Full = new NpgsqlParameter("@Description_Full", DBNull.Value);
-                if (!string.IsNullOrEmpty(descriptionFull)) pDescription_Full.Value = descriptionFull;
-                NpgsqlParameter pImg = new NpgsqlParameter("@Img", DBNull.Value);
-                if (!string.IsNullOrEmpty(img)) pImg.Value = pImg;
-                NpgsqlParameter pBreakpoints = new NpgsqlParameter("@Breakpoints", DBNull.Value);
-                if (!string.IsNullOrEmpty(breakpoints)) pImg.Value = breakpoints;
+                NpgsqlParameter pPrice = new("@Price", price);
+                NpgsqlParameter pBuyPrice = new("@BuyPrice", buyPrice);
+                NpgsqlParameter pStock = new("@Stock", stock);
+                NpgsqlParameter pDescriptionShort = new("@Description_Short", DBNull.Value);
+                if (!string.IsNullOrEmpty(Description_Short)) pDescriptionShort.Value = Description_Short;
+                NpgsqlParameter pDescriptionFull = new("@Description_Full", DBNull.Value);
+                if (!string.IsNullOrEmpty(Description_Full)) pDescriptionFull.Value = Description_Full;
+                NpgsqlParameter pImg = new("@Img", DBNull.Value);
+                if (!string.IsNullOrEmpty(Img)) pImg.Value = Img;
+                NpgsqlParameter pBreakpoints = new("@Breakpoints", DBNull.Value);
+                if (!string.IsNullOrEmpty(Breakpoints)) pBreakpoints.Value = Breakpoints;
 
-                var pReturnedProductId = _helper.ExecuteSQL_Scalar<int>(_connStr, @"
-                insert INTO ""Products"" as d 
+                var pReturnedProductId = _helper.ExecuteSQL_Scalar<int>(_connStr, @$"
+                insert INTO ""Products"" as p
                 (""ProductID"", ""Name"", ""Price"", ""BuyPrice"",
                 ""Stock"", ""Manufacturer"", ""Description_Short"",
                 ""Description_Full"", ""Img"", ""Breakpoints"") 
-                VALUES (@ProductId, @Name, @Price, @BuyPrice, @Stock, @Manufacturer, @Description_Short, @Description_Full, @Img, @Breakpoints)
+                VALUES (@ProductId, @Name, @Price, @BuyPrice, 
+                @Stock, @Manufacturer, @Description_Short, 
+                @Description_Full, @Img, @Breakpoints)
                 on conflict (""ProductID"") do update 
                 set ""Name"" = @Name, ""Price"" = @Price, ""BuyPrice"" = @BuyPrice,
-                ""Stock"" = @Stock, ""Manufacturer"" = @Manufacturer, ""Description_Short"" = @Description_Short, ""Description_Full"" = @Description_Full,
-                ""Img"" = @Img, ""Breakpoints"" = @Breakpoints
-                where d.""ProductID"" = @ProductID
-                returning d.""ProductID""",
-                    pId, pName, pPrice,
-                    pBuyPrice, pStock, pManufacturer,
-                    pDescription_Short, pDescription_Full, pImg, pBreakpoints);
+                ""Stock"" = @Stock, ""Manufacturer"" = @Manufacturer, ""Description_Short"" = @Description_Short, 
+                ""Description_Full"" = @Description_Full, ""Img"" = @Img, ""Breakpoints"" = @Breakpoints
+                where p.""ProductID"" = @ProductID
+                returning p.""ProductID""",
+                    pId, pName, pPrice,pBuyPrice, 
+                    pStock, pManufacturer, pDescriptionShort, 
+                    pDescriptionFull, pImg, pBreakpoints);
                 if (pReturnedProductId == id)
                 {
                     TempData["msg"] = $"Updated item [@id={id}]";

@@ -4,13 +4,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace ModuleEcheloneRebooted
 {
     public class Helpers
     {
-        private static Random _random = new Random();
+        private static Random _random = new();
         private string _connStr;
 
         public Helpers(IConfiguration configuration)
@@ -64,7 +65,7 @@ namespace ModuleEcheloneRebooted
             }
         }
 
-        public T ExecuteSQL_Scalar<T>(string connectionString, string SQL, params Tuple<string, string>[] parameters)
+        public T ExecuteSQL_Scalar<T>(string connectionString, string sql, params Tuple<string, string>[] parameters)
         {
             T obj = default(T);
             using (NpgsqlConnection conn = new NpgsqlConnection(_connStr))
@@ -72,47 +73,50 @@ namespace ModuleEcheloneRebooted
                 NpgsqlCommand cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = SQL;
+                cmd.CommandText = sql;
                 foreach (var tuple in parameters)
                 {
                     cmd.Parameters.Add(new SqlParameter(tuple.Item1, tuple.Item2));
                 }
                 conn.Open();
-                object _obj = cmd.ExecuteScalar();
-                if (_obj != null)
+                object pObj = cmd.ExecuteScalar();
+                if (pObj != null)
                 { //db request returned something
-                    obj = (T)_obj;
+                    obj = (T)pObj;
                 }
                 conn.Close(); //close connection
             }
             return  obj;
         }
         
-        public T ExecuteSQL_Scalar<T>(string connectionString, string SQL, params NpgsqlParameter[]  parameters)
+        public T ExecuteSQL_Scalar<T>(string connectionString, string sql, params NpgsqlParameter[]  parameters)
         {
+            Console.WriteLine("EXECUTING NEW SQL QUERY");
+            Console.WriteLine(sql);
             T obj = default(T);
-            using (NpgsqlConnection conn = new NpgsqlConnection(_connStr))
+            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
             {
                 NpgsqlCommand cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = SQL;
+                cmd.CommandText = sql;
                 foreach (var param in parameters)
                 {
+                    Console.WriteLine($"Adding param to sql query[@name = {param.NpgsqlValue}]");
                     cmd.Parameters.Add(param);
                 }
                 conn.Open();
-                object _obj = cmd.ExecuteScalar();
-                if (_obj != null)
+                object pObj = cmd.ExecuteScalar();
+                if (pObj != null)
                 { //db request returned something
-                    obj = (T)_obj;
+                    obj = (T) pObj;
                 }
                 conn.Close(); //close connection
             }
             return  obj;
         }
 
-        public int GetNextID()
+        public int GetNextId()
         {
             var id = -1;
             using(NpgsqlConnection conn = new NpgsqlConnection(_connStr))
@@ -122,13 +126,14 @@ namespace ModuleEcheloneRebooted
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "Select max(\"ProductID\") from \"Products\"";
-                object _obj = cmd.ExecuteScalar();
-                if (_obj != null)
+                object pObj = cmd.ExecuteScalar();
+                if (pObj != null)
                 {
-                    id = (int)_obj;
+                    id = (int)pObj;
                 }
                 conn.Close();
             }
+            Console.WriteLine($"Returning new id for the Products table [@id={id}]");
             return id + 1;
         }
     }

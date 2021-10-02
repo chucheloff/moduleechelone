@@ -13,11 +13,10 @@ namespace ModuleEcheloneRebooted.Models
     public decimal BuyPrice { get; set; }
     public int Stock { get; set; }
     public string Manufacturer { get; set; }
-    public string DescriptionShort { get; set; }
-    public string DescriptionFull { get; set; }
+    public string Description_Short { get; set; }
+    public string Description_Full { get; set; }
     public string Img { get; set; }
-    
-    public String[] Breakpoints { get; set; }
+    public string Breakpoints { get; set; }
 
     public ProductModel()
     {
